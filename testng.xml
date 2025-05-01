@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Combined Suite" parallel="tests" thread-count="2">
+
+    <!-- Smoke Tests -->
+    <test name="Smoke Test Suite">
+        <groups>
+            <run>
+                <include name="SmokeTest"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.HomePageAmazonTest"/>
+        </classes>
+    </test>
+
+    <!-- Regression Tests -->
+    <test name="Regression Test Suite">
+        <groups>
+            <run>
+                <include name="RegressionTest"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.HomePageAmazonTest"/>
+        </classes>
+    </test>
+
+</suite>
