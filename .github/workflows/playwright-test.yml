@@ -1,0 +1,31 @@
+name: Run Tests in Docker
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Docker
+      - name: Set up Docker
+        run: |
+          docker --version
+
+      # Build the Docker image
+      - name: Build Docker image
+        run: |
+          docker build -t playwright-tests .
+
+      # Run tests in Docker
+      - name: Run tests
+        run: |
+          docker run --rm playwright-tests mvn test -Dgroups=SmokeTest
