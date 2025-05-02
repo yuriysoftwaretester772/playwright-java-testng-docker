@@ -13,16 +13,4 @@
         </classes>
     </test>
 
-    <!-- Regression Tests -->
-    <test name="Regression Test Suite">
-        <groups>
-            <run>
-                <include name="RegressionTest"/>
-            </run>
-        </groups>
-        <classes>
-            <class name="tests.HomePageAmazonTest"/>
-        </classes>
-    </test>
-
 </suite>

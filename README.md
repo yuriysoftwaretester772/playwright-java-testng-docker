@@ -1,3 +1,4 @@
+```markdown
 # Playwright Java TestNG Allure Automation with Docker
 
 This project is a test automation framework built using **Playwright**, **Java**, **TestNG**, and **Allure** for reporting.
@@ -8,6 +9,7 @@ This project is a test automation framework built using **Playwright**, **Java**
 - TestNG for test execution and management.
 - Allure for detailed test reporting.
 - Docker support for running tests in isolated environments.
+- Multiple TestNG suites for different test categories.
 
 ---
 
@@ -49,11 +51,23 @@ This project is a test automation framework built using **Playwright**, **Java**
 ### Default Configuration
 - **Browser**: Chromium
 - **Mode**: Headless
+- **Suite**: `testng-regression.xml`
 
 Run tests with the default configuration:
 ```bash
 mvn test
 ```
+
+### Running Specific TestNG Suites
+You can specify a TestNG suite using the `-DsuiteXmlFile` property:
+- **Regression Suite**:
+  ```bash
+  mvn test -DsuiteXmlFile=testng-regression.xml
+  ```
+- **API Suite**:
+  ```bash
+  mvn test -DsuiteXmlFile=testng-api.xml
+  ```
 
 ### Running in Different Browsers
 You can specify the browser using the `BROWSER` system property:
@@ -79,20 +93,36 @@ mvn test -DHEADLESS=false
 ---
 
 ## Running Tests in Docker
-1. Build the Docker image:
-   ```bash
-   docker build -t playwright-java-tests .
-   ```
 
-2. Run tests in Docker:
-   ```bash
-   docker run --rm playwright-java-tests
-   ```
+### Build the Docker Image
+Build the Docker image for the project:
+```bash
+docker build -t playwright-tests .
+```
 
-3. Specify a browser in Docker:
-   ```bash
-   docker run --rm -e BROWSER=firefox playwright-java-tests
-   ```
+### Run Tests in Docker
+Run tests in Docker with the default configuration:
+```bash
+docker run --rm playwright-tests
+```
+
+### Run Specific TestNG Suites in Docker
+You can specify a TestNG suite in Docker using the `-DsuiteXmlFile` property:
+- **Regression Suite**:
+  ```bash
+  docker run --rm playwright-tests mvn test -DsuiteXmlFile=testng-regression.xml
+  ```
+- **API Suite**:
+  ```bash
+  docker run --rm playwright-tests mvn test -DsuiteXmlFile=testng-api.xml
+  ```
+
+### Run Tests in Different Browsers in Docker
+Specify the browser in Docker using the `BROWSER` environment variable:
+- **Firefox**:
+  ```bash
+  docker run --rm -e BROWSER=firefox playwright-tests
+  ```
 
 ---
 
@@ -111,5 +141,6 @@ mvn test -DHEADLESS=false
 
 ## Additional Notes
 - Ensure Docker has access to the X11 server if running headed tests in Docker.
-- Update the `testng.xml` file to configure test groups or parallel execution.
+- Update the `testng.xml` files to configure test groups or parallel execution.
 - For troubleshooting, check the logs in the `target` directory.
+```

@@ -1,0 +1,20 @@
+<suite name="API Test Suite" verbose="1" parallel="methods" thread-count="5">
+    <test name="All API Tests">
+        <groups>
+            <define name="ApiTest">
+                <include name="ProductAPI"/>
+                <include name="UserAPI"/>
+            </define>
+            <run>
+                <include name="ApiTest"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="api.ProductAPITest"/>
+            <class name="api.UserAPITest"/>
+        </classes>
+    </test>
+
+    <parameter name="baseApiUrl" value="https://dummyjson.com"/>
+    <parameter name="timeout" value="10000"/>
+</suite>
