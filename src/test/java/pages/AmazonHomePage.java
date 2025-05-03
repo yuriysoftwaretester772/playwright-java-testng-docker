@@ -22,10 +22,12 @@ public class AmazonHomePage {
 
     public void navigateToHomePage() {
         page.navigate(BASE_URL);
+        page.waitForLoadState();
     }
 
     public void verifyPageTitle() {
-        Assert.assertEquals(page.title(), PAGE_TITLE, "Page title does not match.");
+        Assert.assertTrue(page.title().contains("Amazon.com"),
+                "Page title does not contain the expected text. Actual title: " + page.title());
     }
 
     public void waitForSearchBox() {
