@@ -3,6 +3,9 @@ package config;
 import com.microsoft.playwright.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import com.microsoft.playwright.options.Geolocation;
+import java.util.List;
+import java.util.Map;
 
 public class BrowserSetup {
 
@@ -51,7 +54,12 @@ public class BrowserSetup {
         }
 
         Browser.NewContextOptions contextOptions = new Browser.NewContextOptions()
-                .setUserAgent(userAgent);
+                .setUserAgent(userAgent)
+                .setLocale("en-US")
+                .setTimezoneId("America/New_York")
+                .setGeolocation(new Geolocation(40.7128, -74.0060))
+                .setPermissions(List.of("geolocation"))
+                .setExtraHTTPHeaders(Map.of("Accept-Language", "en-US"));
 
         context.set(browser.get().newContext(contextOptions));
         page.set(context.get().newPage());
