@@ -1,6 +1,6 @@
 # Playwright Java TestNG Allure Automation with Docker
 
-![GitHub Actions](https://github.com/yuriysoftwaretester772/playwright-java-testng-docker/actions/workflows/playwright-test.yml/badge.svg)
+![GitHub Actions](https://github.com/yuriysoftwaretester772/playwright-java-testng-docker/actions/workflows/playwright-test.yml/badge.svg?branch=master)
 
 This project is a test automation framework built using **Playwright**, **Java**, **TestNG**, and **Allure** for reporting.
 
