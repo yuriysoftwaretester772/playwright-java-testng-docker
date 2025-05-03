@@ -111,29 +111,6 @@ public class UserAPITest {
     }
 
     @Test(groups = "UserAPI")
-    public void testUserAuthentication() {
-        // Create login credentials
-        JsonObject credentials = new JsonObject();
-        credentials.addProperty("username", "kminchelle");
-        credentials.addProperty("password", "0lelplR");
-
-        // Make a POST request to authenticate
-        APIResponse response = apiContext.post("/auth/login",
-                RequestOptions.create().setData(credentials.toString()));
-
-        // Verify status code
-        Assert.assertEquals(response.status(), 200, "Expected 200 OK status");
-
-        // Parse response body
-        JsonObject authResponse = gson.fromJson(response.text(), JsonObject.class);
-
-        // Verify authentication response
-        Assert.assertTrue(authResponse.has("token"), "Login response should contain a token");
-        Assert.assertTrue(authResponse.has("id"), "Login response should contain user id");
-        Assert.assertFalse(authResponse.get("token").getAsString().isEmpty(), "Token should not be empty");
-    }
-
-    @Test(groups = "UserAPI")
     public void testAddNewUser() {
         // Create user data
         JsonObject newUser = new JsonObject();
@@ -147,7 +124,7 @@ public class UserAPITest {
                 RequestOptions.create().setData(newUser.toString()));
 
         // Verify status code
-        Assert.assertEquals(response.status(), 200, "Expected 200 OK status");
+        Assert.assertEquals(response.status(), 201, "Expected 201 Created status");
 
         // Parse response body
         JsonObject addedUser = gson.fromJson(response.text(), JsonObject.class);

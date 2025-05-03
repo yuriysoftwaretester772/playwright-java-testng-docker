@@ -119,7 +119,7 @@ public class ProductAPITest {
                 RequestOptions.create().setData(newProduct.toString()));
 
         // Verify status code
-        Assert.assertEquals(response.status(), 200, "Expected 200 OK status");
+        Assert.assertEquals(response.status(), 201, "Expected 201 Created status");
 
         // Parse response body
         JsonObject addedProduct = gson.fromJson(response.text(), JsonObject.class);

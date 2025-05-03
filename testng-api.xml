@@ -1,4 +1,4 @@
-<suite name="API Test Suite" verbose="1" parallel="methods" thread-count="5">
+<suite name="API Test Suite" verbose="1" parallel="methods" thread-count="1">
     <test name="All API Tests">
         <groups>
             <define name="ApiTest">
