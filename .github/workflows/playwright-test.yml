@@ -28,4 +28,4 @@ jobs:
       # Run tests in Docker
       - name: Run tests
         run: |
-          docker run --rm playwright-tests mvn test -Dgroups=SmokeTest
+          docker run --rm playwright-tests mvn test
