@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Combined Suite" parallel="tests" thread-count="2">
+<suite name="Combined Suite" parallel="tests" thread-count="1">
 
     <!-- Smoke Tests -->
     <test name="Regression Test Suite">
@@ -8,6 +8,10 @@
                 <include name="RegressionTest"/>
             </run>
         </groups>
+        <classes>
+            <class name="tests.SearchItemAmazonTest"/>
+            <class name="tests.SearchMultipleItemsAmazonTest"/>
+        </classes>
     </test>
 
 </suite>

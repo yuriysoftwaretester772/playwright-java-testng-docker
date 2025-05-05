@@ -19,6 +19,7 @@ public class AmazonSearchPage {
 
     public void navigateToSearchPage(String item) {
         page.navigate(PAGE_URL + item);
+        page.waitForLoadState();
     }
 
     public void clearSearchInputField() {
@@ -31,6 +32,7 @@ public class AmazonSearchPage {
     }
 
     public void verifyPageTitle(String searchItem) {
+        page.waitForLoadState();
         String actualTitle = page.title().toLowerCase();
         String searchItemLower = searchItem.toLowerCase();
 

@@ -53,13 +53,18 @@ public class BrowserSetup {
                 break;
         }
 
+        // Set viewport to full screen
+        int screenWidth = 1920; // Replace with dynamic screen width if needed
+        int screenHeight = 1080; // Replace with dynamic screen height if needed
+
         Browser.NewContextOptions contextOptions = new Browser.NewContextOptions()
                 .setUserAgent(userAgent)
                 .setLocale("en-US")
                 .setTimezoneId("America/New_York")
                 .setGeolocation(new Geolocation(40.7128, -74.0060))
                 .setPermissions(List.of("geolocation"))
-                .setExtraHTTPHeaders(Map.of("Accept-Language", "en-US"));
+                .setExtraHTTPHeaders(Map.of("Accept-Language", "en-US"))
+                .setViewportSize(screenWidth, screenHeight);;
 
         context.set(browser.get().newContext(contextOptions));
         page.set(context.get().newPage());
